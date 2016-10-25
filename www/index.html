@@ -1,0 +1,140 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>American Express</title>
+  <meta name="description" content="American Express">
+  <meta name="author" content="Justin.Wallace@momentumww.com">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/featherlight.css">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body id="appContent" class="app">
+  <section id="splash">
+    <img src="img/hero.png" alt="" id="hero">
+    <p>
+      Find the perfect reward in the Membership Rewards&reg; 25th Anniversary
+      <br>Catalog by answering a few questions about yourself.
+    </p>
+    <h1>
+      Tap here to begin
+    </h1>
+  </section>
+  <header>
+    <h1>What's your passion?</h1>
+  </header>
+  <section id="choices">
+    <div id="passion" class="rect flexContainer">
+      <div id="a" class="flexChild">
+        <h2>Entertainment &amp; Events</h2>
+        <img src="img/choices/ent.png" alt="">
+      </div>
+      <div id="b" class="flexChild">
+        <h2>Travel</h2>
+        <img src="img/choices/travel.png" alt="">
+      </div>
+      <div id="c" class="flexChild">
+        <h2>Tech &amp; Gadgets</h2> 
+        <img src="img/choices/tech.png" alt="">
+      </div>
+      <div class="lineBreak"></div>
+      <div id="d" class="flexChild">
+        <h2>Home &amp; Leisure</h2>
+        <img src="img/choices/home.png" alt="">
+      </div>
+      <div id="e" class="flexChild">
+        <h2>Fashion &amp; Beauty</h2>
+        <img src="img/choices/fashion.png" alt="">
+      </div>    
+    </div>
+    <div id="dynamicChoices">
+      <div id="ent" class="circle flexContainer">
+        <div class="flexChild" id="ent-a">
+          <img src="img/choices/ent-a.png" alt="">
+        </div>
+        <div class="flexChild" id="ent-b">
+          <img src="img/choices/ent-b.png" alt="">
+        </div>
+      </div>
+      <div id="travel" class="circle flexContainer">
+        <div class="flexChild" id="travel-a">
+          <img src="img/choices/travel-a.png" alt="">
+        </div>
+        <div class="flexChild" id="travel-b">
+          <img src="img/choices/travel-b.png" alt="">
+        </div>
+      </div>
+      <div id="tech" class="circle flexContainer">
+        <div class="flexChild" id="tech-a">
+          <img src="img/choices/tech-a.png" alt="">
+        </div>
+        <div class="flexChild" id="tech-b">
+          <img src="img/choices/tech-b.png" alt="">
+        </div>
+      </div>
+      <div id="home" class="circle flexContainer">
+        <div class="flexChild" id="home-a">
+          <img src="img/choices/home-a.png" alt="">
+        </div>
+        <div class="flexChild" id="home-b">
+          <img src="img/choices/home-b.png" alt="">
+        </div>
+      </div>
+      <div id="fashion" class="circle flexContainer">
+        <div class="flexChild" id="fashion-a">
+          <img src="img/choices/fashion-a.png" alt="">
+        </div>
+        <div class="flexChild" id="fashion-b">
+          <img src="img/choices/fashion-b.png" alt="">
+        </div>
+      </div>
+      <img src="img/logo.png" alt="" id="choicesLogo">
+    </div>
+  </section>
+  <section id="showcase">
+    <h1>You've arrived! Tap an item that interests you.</h1>
+    <div id="rewardContainer">
+      <a href="https://www01.extra.americanexpress.com/MR25th/?extlink=us-mr-c1620|offsite|aw|part|mr25anniversary|mktgglobal|bdsc|vanity" id="leftClickArea" data-featherlight="iframe">
+        <div class="reward" id="leftReward">
+          <img src="img/rewards/mixology.png" alt="">
+          <h3 id="leftRewardTitle" class="rewardTitle">TUMI TEGRA-LITE Max Continental Expandable Carry-On</h3>
+          <p class="pointCost">Points Estimate: <span id="leftRewardCost"></span></p>
+        </div>
+      </a>
+      <a href="https://www01.extra.americanexpress.com/MR25th/?extlink=us-mr-c1620|offsite|aw|part|mr25anniversary|mktgglobal|bdsc|vanity" id="featuredClickArea" data-featherlight="iframe">
+        <div class="reward" id="featuredReward">
+          <img src="img/rewards/beach.png" alt="">
+          <h3 id="featuredRewardTitle" class="rewardTitle">Your Private Beach at Exuma's Question Mark Sandbar in the Bahamas</h3>
+          <p class="pointCost">Points Estimate: <span id="featuredRewardCost"></span></p>
+        </div>
+      </a>
+      <a href="https://www01.extra.americanexpress.com/MR25th/?extlink=us-mr-c1620|offsite|aw|part|mr25anniversary|mktgglobal|bdsc|vanity" id="rightClickArea" data-featherlight="iframe">
+        <div class="reward" id="rightReward">
+          <img src="img/rewards/mixology.png" alt="">
+          <h3 id="rightRewardTitle" class="rewardTitle">Private Mixology Lesson and Party with an Expert, Award-Winning Bartender*</h3>
+          <p class="pointCost">Points Estimate: <span id="rightRewardCost"></span></p>
+        </div>
+      </a>
+    </div>
+    <p class="disclaimer">*Must be 21 years of age or older to consume alcoholic beverages. Please drink responsibly.</p>
+    <div id="showcaseCTA">Tap here to explore more rewards</div>
+  </section>
+  <footer>
+  </footer>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/featherlight.js"></script>
+  <script src="cordova.js"></script>z
+  <script src="js/main.js"></script>
+</body>
+</html>

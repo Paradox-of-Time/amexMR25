@@ -1,6 +1,8 @@
 $(document).ready(function() {
-  // Hook up inAppBrowser
-  // window.open = cordova.InAppBrowser.open;
+  // Google Analytics
+  window.ga.startTrackerWithId('UA-58718436-3'); // initialize
+  window.ga.setAppVersion('1.0.0'); // set app version
+  
   // Prevent elastic scrolling
   // document.ontouchmove = function(e) {e.preventDefault()};
   //uses body because jquery on events are called off of the element they are
@@ -53,13 +55,15 @@ $(document).ready(function() {
                 name: 'Your Private Beach at Exuma\'s Question Mark Sandbar in the Bahamas',
                 cost: '295,000',
                 image: 'beach.png',
-                url: 'https://www01.extra.americanexpress.com/Experience.aspx?usclongcode=102717577&intlink=us-mr-25thanniversary-entertainment-YourownprivatebeachatExumasbrQuestionMarkSandbar'
+                url: 'https://www01.extra.americanexpress.com/Experience.aspx?usclongcode=102717577&intlink=us-mr-25thanniversary-entertainment-YourownprivatebeachatExumasbrQuestionMarkSandbar',
+                alcohol: false
               },
               b:{
                 name: 'Private Mixology Lesson and Party with an Expert, Award-Winning Bartender*',
                 cost: '100,000',
                 image: 'mixology.png',
-                url: 'https://www01.extra.americanexpress.com/Experience.aspx?usclongcode=102420966&intlink=us-mr-25thanniversary-entertainment-PrivateMixologyLessonandPartywithanExpertAwardWinningBartender'
+                url: 'https://www01.extra.americanexpress.com/Experience.aspx?usclongcode=102420966&intlink=us-mr-25thanniversary-entertainment-PrivateMixologyLessonandPartywithanExpertAwardWinningBartender',
+                alcohol: true
               }
             },
             travel:{
@@ -67,13 +71,15 @@ $(document).ready(function() {
                 name: 'TUMI Luggage',
                 cost: '74,500',
                 image: 'luggage.png',
-                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=98948911&intlink=us-mr-25thanniversary-travel-TumiTegraLiteregMaxContinentalExpandableCarryOn'
+                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=98948911&intlink=us-mr-25thanniversary-travel-TumiTegraLiteregMaxContinentalExpandableCarryOn',
+                alcohol: false
               },
               b:{
-                name: 'The Quintessential Wine Tasting',
+                name: 'The Quintessential Wine Tasting*',
                 cost: '36,000',
                 image: 'wine.png',
-                url: 'https://www01.extra.americanexpress.com/Experience.aspx?usclongcode=102418889&intlink=us-mr-25thanniversary-travel-TheQuintessentialWineTastingExperienceampExplorationbrPrivatelyHosted'
+                url: 'https://www01.extra.americanexpress.com/Experience.aspx?usclongcode=102418889&intlink=us-mr-25thanniversary-travel-TheQuintessentialWineTastingExperienceampExplorationbrPrivatelyHosted',
+                alcohol: true
               }
             },
             tech:{
@@ -81,13 +87,15 @@ $(document).ready(function() {
                 name: 'Swarovski Activity Crystal',
                 cost: '16,900',
                 image: 'swarovski.png',
-                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102336207&intlink=us-mr-25thanniversary-tech-SwarovskiActivityCrystal'
+                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102336207&intlink=us-mr-25thanniversary-tech-SwarovskiActivityCrystal',
+                alcohol: false
               },
               b:{
                 name: 'GoPro',
                 cost: '62,999',
                 image: 'gopro.png',
-                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102336208&intlink=us-mr-25thanniversary-tech-GoProHERO4Silverwith3wayMountCaseybrand32GBSDCard'
+                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102336208&intlink=us-mr-25thanniversary-tech-GoProHERO4Silverwith3wayMountCaseybrand32GBSDCard',
+                alcohol: false
               }
             },
             home:{
@@ -95,13 +103,15 @@ $(document).ready(function() {
                 name: 'Nespresso',
                 cost: '14,900',
                 image: 'nespresso.png',
-                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102166518&intlink=us-mr-25thanniversary-home-NespressoInissiaEspressoMachineSilver'
+                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102166518&intlink=us-mr-25thanniversary-home-NespressoInissiaEspressoMachineSilver',
+                alcohol: false
               },
               b:{
                 name: 'Casper Mattress',
                 cost: '83,500 – 132,000',
                 image: 'mattress.png',
-                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102393216&intlink=us-mr-25thanniversary-home-TheDreamTeamTheCasperMattressPillowandSheetsTWINXL'
+                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102393216&intlink=us-mr-25thanniversary-home-TheDreamTeamTheCasperMattressPillowandSheetsTWINXL',
+                alcohol: false
               }
             },
             fashion:{
@@ -109,13 +119,15 @@ $(document).ready(function() {
                 name: 'Lavido',
                 cost: '18,600',
                 image: 'lavido.png',
-                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102393211&intlink=us-mr-25thanniversary-fashion-LavidoInspiredbyNatureHeadtoToeCollectionbrCuratedbyTravelBeautyreg'
+                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102393211&intlink=us-mr-25thanniversary-fashion-LavidoInspiredbyNatureHeadtoToeCollectionbrCuratedbyTravelBeautyreg',
+                alcohol: false
               },
               b:{
                 name: 'Cole Haan Bag',
                 cost: '60,000',
                 image: 'bag.png',
-                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102567055&intlink=us-mr-25thanniversary-fashion-ColeHaanGenevieveLargeTriangleTote'
+                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102567055&intlink=us-mr-25thanniversary-fashion-ColeHaanGenevieveLargeTriangleTote',
+                alcohol: false
               }
             }
           };
@@ -158,6 +170,7 @@ $(document).ready(function() {
           break;
         default:
           console.log('No requisite user path found');
+          window.ga.trackEvent('Category', 'Action', 'Label', Value);
           break;
       }
     }
@@ -268,6 +281,8 @@ $(document).ready(function() {
     rightCategory = right[0];
     rightPrize = right[1];
 
+    var alcohol = false;
+
     // left image
     $('#leftRewardTitle').text(rewards[leftCategory][leftPrize].name);
     $('#leftRewardCost').text(rewards[leftCategory][leftPrize].cost);
@@ -281,7 +296,6 @@ $(document).ready(function() {
     $('#featuredRewardCost').text(rewards[featuredCategory][featuredPrize].cost);
     $('#featuredReward img').attr('src','img/rewards/' + rewards[featuredCategory][featuredPrize].image);
     $('#featuredReward').click(function() {
-      console.log('in the featured reward click listener');
       var featuredURL = rewards[featuredCategory][featuredPrize].url;
       cordova.InAppBrowser.open(featuredURL, '_blank', 'clearsessioncache=true, clearcache=true');
     });
@@ -290,10 +304,16 @@ $(document).ready(function() {
     $('#rightRewardCost').text(rewards[rightCategory][rightPrize].cost);
     $('#rightReward img').attr('src','img/rewards/' + rewards[rightCategory][rightPrize].image);
     $('#rightReward').click(function() {
-      console.log('in the right reward click listener');
       var rightURL = rewards[rightCategory][rightPrize].url;
       cordova.InAppBrowser.open(rightURL, '_blank', 'clearsessioncache=true, clearcache=true');
     });
-  }
+
+    //check alcohol
+    if ((rewards[leftCategory][leftPrize].alcohol) || (rewards[featuredCategory][featuredPrize].alcohol) || (rewards[rightCategory][rightPrize].alcohol)) {
+      alcohol = true;
+    } else if (!alcohol) {
+      $('.disclaimer').css('opacity', '0');
+    }
+  } 
 
 });

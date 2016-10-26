@@ -1,5 +1,22 @@
-/* Initial Hiding */
+@font-face {
+font-family: 'BentonSans';
+src: url('../fonts/BentonSans-Bold.otf') format('opentype');
+font-weight: 600;
+}
 
+@font-face {
+font-family: 'BentonSans';
+src: url('../fonts/BentonSans-Regular.otf') format('opentype');
+font-weight: 400;
+}
+
+@font-face {
+font-family: 'BentonSans';
+src: url('../fonts/BentonSans-Light.otf') format('opentype');
+font-weight: 200;
+}
+
+/* Initial Hiding */
 section#showcase {
   display: none;
 }
@@ -51,6 +68,10 @@ header h1 {
   text-align: center;
 }
 
+#showcase .reward {
+  cursor: pointer;
+}
+
 h2 {
   color: #002663;
   font-size: 23px;
@@ -86,6 +107,15 @@ footer {
   left: 0;
   padding: 0;
   margin: 0;
+}
+
+#refreshButton {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  z-index: 99;
 }
 
 /* Splash */
@@ -216,7 +246,7 @@ section#splash {
   font-size: 24px;
 }
 
-a#leftClickArea, a#rightClickArea {
+#leftReward, #rightReward {
   width: 24%;
   padding: 10px;
   margin-top: 80px;
@@ -229,7 +259,7 @@ a#leftClickArea, a#rightClickArea {
   display: block;
 }
 
-a#featuredClickArea {
+#featuredReward {
   width: 38%;
 }
 

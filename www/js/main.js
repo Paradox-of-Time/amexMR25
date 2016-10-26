@@ -1,19 +1,51 @@
 $(document).ready(function() {
+  // Google Analytics
+  document.addEventListener('deviceready', function () {
+    window.ga.startTrackerWithId('UA-58718436-3'); // initialize
+    window.ga.setAppVersion('1.0.1'); // set app version
+  }, false);
+
+  // Attach & initialize FastClick
+  $(function() {
+      FastClick.attach(document.body);
+  });
+  
   // Prevent elastic scrolling
-  document.ontouchmove = function(e) {e.preventDefault()};
+  // document.ontouchmove = function(e) {e.preventDefault()};
   //uses body because jquery on events are called off of the element they are
   //added to, so bubbling would not work if we used document instead.
-  $('body').on('touchstart','.scrollable',function(e) {
-    if (e.currentTarget.scrollTop === 0) {
-      e.currentTarget.scrollTop = 1;
-    } else if (e.currentTarget.scrollHeight === e.currentTarget.scrollTop + e.currentTarget.offsetHeight) {
-      e.currentTarget.scrollTop -= 1;
-    }
-  });
+  // $('body').on('touchstart','.scrollable',function(e) {
+  //   if (e.currentTarget.scrollTop === 0) {
+  //     e.currentTarget.scrollTop = 1;
+  //   } else if (e.currentTarget.scrollHeight === e.currentTarget.scrollTop + e.currentTarget.offsetHeight) {
+  //     e.currentTarget.scrollTop -= 1;
+  //   }
+  // });
   //prevents preventDefault from being called on document if it sees a scrollable div
-  $('body').on('touchmove','.scrollable',function(e) {
-    e.stopPropagation();
-  });
+  // $('body').on('touchmove','.scrollable',function(e) {
+  //   e.stopPropagation();
+  // });
+
+  // handle idle refresh
+  function idleRefresh() {
+    var t;
+    window.onload = resetTimer;
+    window.onmousemove = resetTimer;
+    window.onmousedown = resetTimer; // catches touchscreen presses
+    window.onclick = resetTimer;     // catches touchpad clicks
+    window.onscroll = resetTimer;    // catches scrolling with arrow keys
+    window.onkeypress = resetTimer;
+
+    function reloadPage() {
+      location.reload();
+    }
+
+    function resetTimer() {
+      clearTimeout(t);
+      t = setTimeout(reloadPage, 45000);  // time is in milliseconds
+    }
+  }
+  idleRefresh();
 
   var    userPath = null,
       userAnswers = [],
@@ -23,19 +55,22 @@ $(document).ready(function() {
              home = $('#home'),
           fashion = $('#fashion'),
            travel = $('#travel'),
+           // the big boy himself, the object with all of the rewards inside.
           rewards = {
             ent:{
               a:{
                 name: 'Your Private Beach at Exuma\'s Question Mark Sandbar in the Bahamas',
                 cost: '295,000',
                 image: 'beach.png',
-                url: 'https://www01.extra.americanexpress.com/Experience.aspx?usclongcode=102717577&intlink=us-mr-25thanniversary-entertainment-YourownprivatebeachatExumasbrQuestionMarkSandbar'
+                url: 'https://www01.extra.americanexpress.com/Experience.aspx?usclongcode=102717577&intlink=us-mr-25thanniversary-entertainment-YourownprivatebeachatExumasbrQuestionMarkSandbar',
+                alcohol: false
               },
               b:{
                 name: 'Private Mixology Lesson and Party with an Expert, Award-Winning Bartender*',
                 cost: '100,000',
                 image: 'mixology.png',
-                url: 'https://www01.extra.americanexpress.com/Experience.aspx?usclongcode=102420966&intlink=us-mr-25thanniversary-entertainment-PrivateMixologyLessonandPartywithanExpertAwardWinningBartender'
+                url: 'https://www01.extra.americanexpress.com/Experience.aspx?usclongcode=102420966&intlink=us-mr-25thanniversary-entertainment-PrivateMixologyLessonandPartywithanExpertAwardWinningBartender',
+                alcohol: true
               }
             },
             travel:{
@@ -43,13 +78,15 @@ $(document).ready(function() {
                 name: 'TUMI Luggage',
                 cost: '74,500',
                 image: 'luggage.png',
-                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=98948911&intlink=us-mr-25thanniversary-travel-TumiTegraLiteregMaxContinentalExpandableCarryOn'
+                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=98948911&intlink=us-mr-25thanniversary-travel-TumiTegraLiteregMaxContinentalExpandableCarryOn',
+                alcohol: false
               },
               b:{
-                name: 'The Quintessential Wine Tasting',
+                name: 'The Quintessential Wine Tasting*',
                 cost: '36,000',
                 image: 'wine.png',
-                url: 'https://www01.extra.americanexpress.com/Experience.aspx?usclongcode=102418889&intlink=us-mr-25thanniversary-travel-TheQuintessentialWineTastingExperienceampExplorationbrPrivatelyHosted'
+                url: 'https://www01.extra.americanexpress.com/Experience.aspx?usclongcode=102418889&intlink=us-mr-25thanniversary-travel-TheQuintessentialWineTastingExperienceampExplorationbrPrivatelyHosted',
+                alcohol: true
               }
             },
             tech:{
@@ -57,13 +94,15 @@ $(document).ready(function() {
                 name: 'Swarovski Activity Crystal',
                 cost: '16,900',
                 image: 'swarovski.png',
-                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102336207&intlink=us-mr-25thanniversary-tech-SwarovskiActivityCrystal'
+                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102336207&intlink=us-mr-25thanniversary-tech-SwarovskiActivityCrystal',
+                alcohol: false
               },
               b:{
                 name: 'GoPro',
                 cost: '62,999',
                 image: 'gopro.png',
-                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102336208&intlink=us-mr-25thanniversary-tech-GoProHERO4Silverwith3wayMountCaseybrand32GBSDCard'
+                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102336208&intlink=us-mr-25thanniversary-tech-GoProHERO4Silverwith3wayMountCaseybrand32GBSDCard',
+                alcohol: false
               }
             },
             home:{
@@ -71,13 +110,15 @@ $(document).ready(function() {
                 name: 'Nespresso',
                 cost: '14,900',
                 image: 'nespresso.png',
-                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102166518&intlink=us-mr-25thanniversary-home-NespressoInissiaEspressoMachineSilver'
+                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102166518&intlink=us-mr-25thanniversary-home-NespressoInissiaEspressoMachineSilver',
+                alcohol: false
               },
               b:{
                 name: 'Casper Mattress',
                 cost: '83,500 – 132,000',
                 image: 'mattress.png',
-                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102393216&intlink=us-mr-25thanniversary-home-TheDreamTeamTheCasperMattressPillowandSheetsTWINXL'
+                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102393216&intlink=us-mr-25thanniversary-home-TheDreamTeamTheCasperMattressPillowandSheetsTWINXL',
+                alcohol: false
               }
             },
             fashion:{
@@ -85,25 +126,36 @@ $(document).ready(function() {
                 name: 'Lavido',
                 cost: '18,600',
                 image: 'lavido.png',
-                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102393211&intlink=us-mr-25thanniversary-fashion-LavidoInspiredbyNatureHeadtoToeCollectionbrCuratedbyTravelBeautyreg'
+                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102393211&intlink=us-mr-25thanniversary-fashion-LavidoInspiredbyNatureHeadtoToeCollectionbrCuratedbyTravelBeautyreg',
+                alcohol: false
               },
               b:{
                 name: 'Cole Haan Bag',
                 cost: '60,000',
                 image: 'bag.png',
-                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102567055&intlink=us-mr-25thanniversary-fashion-ColeHaanGenevieveLargeTriangleTote'
+                url: 'https://www01.extra.americanexpress.com/Product.aspx?viewfullsite=y&usclongcode=102567055&intlink=us-mr-25thanniversary-fashion-ColeHaanGenevieveLargeTriangleTote',
+                alcohol: false
               }
             }
           };
 
   $('section#splash').click(function() {
-    $('#splash h1').fadeOut(); //figure out how to make just the text fade out...
+    $('#splash h1').fadeOut(); //figure out how to make just the text fade out... maybe not necessary.
     $('#splash').slideUp('slow');
   });
 
   $('.flexChild').click(function() {
     pathHandler(this.id);
   });
+
+  $('#showcaseCTA').click(function() {
+    window.ga.trackEvent('Reward', 'Tapped', 'General CTA');
+    cordova.InAppBrowser.open('https://www01.extra.americanexpress.com/MR25th/?extlink=db-us-CPSMR25-Centurion-Lounge-Game', '_blank', 'clearsessioncache=true, clearcache=true');
+  });
+
+  $('#refreshButton').click(function() {
+    location.reload();
+  })
 
   function pathHandler(triggerID) {
     // determines the path the user will take depending on their 'passion'
@@ -128,6 +180,8 @@ $(document).ready(function() {
           console.log('No requisite user path found');
           break;
       }
+
+      window.ga.trackEvent('Button', 'Tapped', triggerID);
     }
 
     // fire logic handler
@@ -236,29 +290,45 @@ $(document).ready(function() {
     rightCategory = right[0];
     rightPrize = right[1];
 
-    $.featherlight({iframeMaxWidth: '80%', iframeWidth: 500,
-    iframeHeight: 300});
+    var alcohol = false;
 
     // left image
     $('#leftRewardTitle').text(rewards[leftCategory][leftPrize].name);
     $('#leftRewardCost').text(rewards[leftCategory][leftPrize].cost);
     $('#leftReward img').attr('src','img/rewards/' + rewards[leftCategory][leftPrize].image);
-    $('#leftReward').click(function(){
-      
-      console.log('in the left reward click listener');
+    $('#leftReward').click(function() {
+      var tappedPrize = rewards[leftCategory][leftPrize].name
+      window.ga.trackEvent('Reward', 'Tapped', tappedPrize);
+      var leftURL = rewards[leftCategory][leftPrize].url;
+      cordova.InAppBrowser.open(leftURL, '_blank', 'clearsessioncache=true, clearcache=true');
     });
     // center image
     $('#featuredRewardTitle').text(rewards[featuredCategory][featuredPrize].name);
     $('#featuredRewardCost').text(rewards[featuredCategory][featuredPrize].cost);
     $('#featuredReward img').attr('src','img/rewards/' + rewards[featuredCategory][featuredPrize].image);
+    $('#featuredReward').click(function() {
+      var tappedPrize = rewards[featuredCategory][featuredPrize].name
+      window.ga.trackEvent('Reward', 'Tapped', tappedPrize);
+      var featuredURL = rewards[featuredCategory][featuredPrize].url;
+      cordova.InAppBrowser.open(featuredURL, '_blank', 'clearsessioncache=true, clearcache=true');
+    });
     // right image
     $('#rightRewardTitle').text(rewards[rightCategory][rightPrize].name);
     $('#rightRewardCost').text(rewards[rightCategory][rightPrize].cost);
     $('#rightReward img').attr('src','img/rewards/' + rewards[rightCategory][rightPrize].image);
-  }
+    $('#rightReward').click(function() {
+      var tappedPrize = rewards[rightCategory][rightPrize].name
+      window.ga.trackEvent('Reward', 'Tapped', tappedPrize);
+      var rightURL = rewards[rightCategory][rightPrize].url;
+      cordova.InAppBrowser.open(rightURL, '_blank', 'clearsessioncache=true, clearcache=true');
+    });
 
-  function logAnswer(x) {
-
-  }
+    //check alcohol
+    if ((rewards[leftCategory][leftPrize].alcohol) || (rewards[featuredCategory][featuredPrize].alcohol) || (rewards[rightCategory][rightPrize].alcohol)) {
+      alcohol = true;
+    } else if (!alcohol) {
+      $('.disclaimer').css('opacity', '0');
+    }
+  } 
 
 });

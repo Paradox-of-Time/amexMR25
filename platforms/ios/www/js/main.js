@@ -1,7 +1,14 @@
 $(document).ready(function() {
   // Google Analytics
-  window.ga.startTrackerWithId('UA-58718436-3'); // initialize
-  window.ga.setAppVersion('1.0.0'); // set app version
+  document.addEventListener('deviceready', function () {
+    window.ga.startTrackerWithId('UA-58718436-3'); // initialize
+    window.ga.setAppVersion('1.0.1'); // set app version
+  }, false);
+
+  // Attach & initialize FastClick
+  $(function() {
+      FastClick.attach(document.body);
+  });
   
   // Prevent elastic scrolling
   // document.ontouchmove = function(e) {e.preventDefault()};
@@ -142,7 +149,8 @@ $(document).ready(function() {
   });
 
   $('#showcaseCTA').click(function() {
-    cordova.InAppBrowser.open('https://www01.extra.americanexpress.com/MR25th/?extlink=us-mr-c1620|offsite|aw|part|mr25anniversary|mktgglobal|bdsc|vanity', '_blank', 'clearsessioncache=true, clearcache=true');
+    window.ga.trackEvent('Reward', 'Tapped', 'General CTA');
+    cordova.InAppBrowser.open('https://www01.extra.americanexpress.com/MR25th/?extlink=db-us-CPSMR25-Centurion-Lounge-Game', '_blank', 'clearsessioncache=true, clearcache=true');
   });
 
   $('#refreshButton').click(function() {
@@ -170,9 +178,10 @@ $(document).ready(function() {
           break;
         default:
           console.log('No requisite user path found');
-          window.ga.trackEvent('Category', 'Action', 'Label', Value);
           break;
       }
+
+      window.ga.trackEvent('Button', 'Tapped', triggerID);
     }
 
     // fire logic handler
@@ -288,6 +297,8 @@ $(document).ready(function() {
     $('#leftRewardCost').text(rewards[leftCategory][leftPrize].cost);
     $('#leftReward img').attr('src','img/rewards/' + rewards[leftCategory][leftPrize].image);
     $('#leftReward').click(function() {
+      var tappedPrize = rewards[leftCategory][leftPrize].name
+      window.ga.trackEvent('Reward', 'Tapped', tappedPrize);
       var leftURL = rewards[leftCategory][leftPrize].url;
       cordova.InAppBrowser.open(leftURL, '_blank', 'clearsessioncache=true, clearcache=true');
     });
@@ -296,6 +307,8 @@ $(document).ready(function() {
     $('#featuredRewardCost').text(rewards[featuredCategory][featuredPrize].cost);
     $('#featuredReward img').attr('src','img/rewards/' + rewards[featuredCategory][featuredPrize].image);
     $('#featuredReward').click(function() {
+      var tappedPrize = rewards[featuredCategory][featuredPrize].name
+      window.ga.trackEvent('Reward', 'Tapped', tappedPrize);
       var featuredURL = rewards[featuredCategory][featuredPrize].url;
       cordova.InAppBrowser.open(featuredURL, '_blank', 'clearsessioncache=true, clearcache=true');
     });
@@ -304,6 +317,8 @@ $(document).ready(function() {
     $('#rightRewardCost').text(rewards[rightCategory][rightPrize].cost);
     $('#rightReward img').attr('src','img/rewards/' + rewards[rightCategory][rightPrize].image);
     $('#rightReward').click(function() {
+      var tappedPrize = rewards[rightCategory][rightPrize].name
+      window.ga.trackEvent('Reward', 'Tapped', tappedPrize);
       var rightURL = rewards[rightCategory][rightPrize].url;
       cordova.InAppBrowser.open(rightURL, '_blank', 'clearsessioncache=true, clearcache=true');
     });

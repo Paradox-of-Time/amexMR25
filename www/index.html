@@ -11,9 +11,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
-  <link rel="stylesheet" type="text/css" href="css/index.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/featherlight.css">
 
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -21,6 +19,9 @@
 </head>
 
 <body id="appContent" class="app">
+  <div id="refreshButton">
+    
+  </div>
   <section id="splash">
     <img src="img/hero.png" alt="" id="hero">
     <p>
@@ -105,27 +106,21 @@
   <section id="showcase">
     <h1>You've arrived! Tap an item that interests you.</h1>
     <div id="rewardContainer">
-      <a href="https://www01.extra.americanexpress.com/MR25th/?extlink=us-mr-c1620|offsite|aw|part|mr25anniversary|mktgglobal|bdsc|vanity" id="leftClickArea" data-featherlight="iframe">
-        <div class="reward" id="leftReward">
-          <img src="img/rewards/mixology.png" alt="">
-          <h3 id="leftRewardTitle" class="rewardTitle">TUMI TEGRA-LITE Max Continental Expandable Carry-On</h3>
-          <p class="pointCost">Points Estimate: <span id="leftRewardCost"></span></p>
-        </div>
-      </a>
-      <a href="https://www01.extra.americanexpress.com/MR25th/?extlink=us-mr-c1620|offsite|aw|part|mr25anniversary|mktgglobal|bdsc|vanity" id="featuredClickArea" data-featherlight="iframe">
-        <div class="reward" id="featuredReward">
-          <img src="img/rewards/beach.png" alt="">
-          <h3 id="featuredRewardTitle" class="rewardTitle">Your Private Beach at Exuma's Question Mark Sandbar in the Bahamas</h3>
-          <p class="pointCost">Points Estimate: <span id="featuredRewardCost"></span></p>
-        </div>
-      </a>
-      <a href="https://www01.extra.americanexpress.com/MR25th/?extlink=us-mr-c1620|offsite|aw|part|mr25anniversary|mktgglobal|bdsc|vanity" id="rightClickArea" data-featherlight="iframe">
-        <div class="reward" id="rightReward">
-          <img src="img/rewards/mixology.png" alt="">
-          <h3 id="rightRewardTitle" class="rewardTitle">Private Mixology Lesson and Party with an Expert, Award-Winning Bartender*</h3>
-          <p class="pointCost">Points Estimate: <span id="rightRewardCost"></span></p>
-        </div>
-      </a>
+      <div class="reward" id="leftReward">
+        <img src="img/rewards/mixology.png" alt="">
+        <h3 id="leftRewardTitle" class="rewardTitle">TUMI TEGRA-LITE Max Continental Expandable Carry-On</h3>
+        <p class="pointCost">Points Estimate: <span id="leftRewardCost"></span></p>
+      </div>
+      <div class="reward" id="featuredReward">
+        <img src="img/rewards/beach.png" alt="">
+        <h3 id="featuredRewardTitle" class="rewardTitle">Your Private Beach at Exuma's Question Mark Sandbar in the Bahamas</h3>
+        <p class="pointCost">Points Estimate: <span id="featuredRewardCost"></span></p>
+      </div>
+      <div class="reward" id="rightReward">
+        <img src="img/rewards/mixology.png" alt="">
+        <h3 id="rightRewardTitle" class="rewardTitle">Private Mixology Lesson and Party with an Expert, Award-Winning Bartender*</h3>
+        <p class="pointCost">Points Estimate: <span id="rightRewardCost"></span></p>
+      </div>
     </div>
     <p class="disclaimer">*Must be 21 years of age or older to consume alcoholic beverages. Please drink responsibly.</p>
     <div id="showcaseCTA">Tap here to explore more rewards</div>
@@ -133,8 +128,8 @@
   <footer>
   </footer>
   <script src="js/jquery.min.js"></script>
-  <script src="js/featherlight.js"></script>
-  <script src="cordova.js"></script>z
+  <script src="cordova.js"></script>
+  <script src='js/fastclick.js'></script>
   <script src="js/main.js"></script>
 </body>
 </html>

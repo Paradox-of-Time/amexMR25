@@ -363,8 +363,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Justin Wallace (469MJ4C253)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Justin Wallace (469MJ4C253)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = X8V3WK8337;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -396,8 +396,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Justin Wallace (469MJ4C253)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Justin Wallace (469MJ4C253)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Momentum-NA, Inc";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Momentum-NA, Inc";
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = X8V3WK8337;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -412,8 +412,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.momentum.amexMR25;
 				PRODUCT_NAME = amexMR25;
-				PROVISIONING_PROFILE = "72c2b409-0cda-42c0-942c-35afd7ce40cf";
-				PROVISIONING_PROFILE_SPECIFIER = "American Express MR25 (development)";
+				PROVISIONING_PROFILE = "47d8f7ca-0a89-4746-912d-20eb05951f46";
+				PROVISIONING_PROFILE_SPECIFIER = "American Express MR25";
 			};
 			name = Release;
 		};

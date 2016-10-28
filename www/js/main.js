@@ -2,7 +2,8 @@ $(document).ready(function() {
   // Google Analytics
   document.addEventListener('deviceready', function () {
     window.ga.startTrackerWithId('UA-58718436-3'); // initialize
-    window.ga.setAppVersion('1.0.1'); // set app version
+    window.ga.setAppVersion('1.2.0'); // set app version
+    window.ga.trackView('Screen Title', '', true);
   }, false);
 
   // Attach & initialize FastClick
@@ -163,32 +164,43 @@ $(document).ready(function() {
       switch(triggerID) {
         case 'a':
           userPath = [ent, tech, travel];
+          triggerID = 'Entertainment';
           break;
         case 'b':
           userPath = [travel, tech, ent];
+          triggerID = 'Travel';
           break;
         case 'c':
           userPath = [tech, home, travel];
+          triggerID = 'Tech';
           break;
         case 'd':
           userPath = [home, ent, fashion];
+          triggerID = 'Home';
           break;
         case 'e':
           userPath = [fashion, travel, tech];
+          triggerID = 'Fashion';
           break;
         default:
           console.log('No requisite user path found');
           break;
       }
 
-      window.ga.trackEvent('Button', 'Tapped', triggerID);
+      window.ga.trackEvent('Passion', 'Tapped', triggerID);
     }
+
+    $(this).on('select mousedown mouseup dblclick etc', false);
 
     // fire logic handler
     logicHandler(triggerID);
   }
 
   function logicHandler(triggerID) {
+    setTimeout(function() {
+      $(this).off('select mousedown mouseup dblclick etc', false);
+    }, 300);
+
     switch(i) {
       case null:
         // if they're on the first page
@@ -204,16 +216,19 @@ $(document).ready(function() {
         fadeOutHandler(triggerID);
         i = 1;
         fadeInHandler();
+        window.ga.trackEvent('Choice 1', 'Tapped', triggerID);
         break;
       case 1: // choice 2
         fadeOutHandler(triggerID);
         i = 2;
         fadeInHandler();
+        window.ga.trackEvent('Choice 2', 'Tapped', triggerID);
         break;
       case 2: // choice 3
         fadeOutHandler(triggerID);
         i = 3;
         fadeInHandler();
+        window.ga.trackEvent('Choice 3', 'Tapped', triggerID);
         break;
       default:
         console.log('No page caught in logic');
